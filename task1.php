@@ -4,7 +4,7 @@ class TeamGym
 {
     private $name;
     private $score = [];
-    
+
     // define the constructor method
     public function __construct($name, $score)
     {
@@ -25,6 +25,7 @@ class TeamGym
     }
 
     // returns the value of the name property
+    // NOTE: can be renamed as Name()
     public function getName()
     {
         return $this->name;
@@ -64,6 +65,18 @@ class CompetitionGym
         } else {
             return "Tidak Ada Pemenang";
         }
+
+        // NOTE: using best practices with guard clauses
+        // if ($average_team1 > $average_team2 && $this->team1->getMinScore()) {
+        //     return "{$this->team1->getName()} Memenangkan trofi. Tim {$this->team2->getName()} Kalah.";
+        // }
+        // if ($average_team2 > $average_team1 && $this->team2->getMinScore()) {
+        //     return "{$this->team2->getName()} Memenangkan trofi. Tim {$this->team1->getName()} Kalah.";
+        // }
+        // if ($this->team1->getMinScore() && $this->team2->getMinScore()) {
+        //     return "Seri";
+        // }
+        // return "Tidak Ada Pemenang";
     }
 
     // displays each gymnastics team's competition results
@@ -90,6 +103,9 @@ class CompetitionGym
             } else {
                 echo "Pemenang: " . $winner->getName() . " dengan skor rata-rata " . $winner->calculateAverage();
             }
+            // NOTE: if using best practices with guard clauses in class CompetitionGym
+            // echo $this->theWinner($dolphin->calculateAverage(), $koala->calculateAverage());
+
             echo "<br><br>";
         }
     }
